@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Jogos WebGL</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to right, #1f4037, #99f2c8);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎮 Portal de Jogos WebGL</h1>
+    <p>Clique para jogar!</p>
+  </header>
+
+  <div class="grid" id="gamesGrid">
+    <!-- Os jogos serão adicionados aqui via JavaScript -->
+  </div>
+
+  <footer>
+    &copy; 2025 - Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const totalJogos = 20; // Altere conforme a quantidade real de jogos
+    const grid = document.getElementById("gamesGrid");
+
+    for (let i = 1; i <= totalJogos; i++) {
+      const pasta = String(i).padStart(3, '0');
+      const card = document.createElement("div");
+      card.className = "card";
+      card.onclick = () => window.open(`./${pasta}/index.html`, '_blank');
+
+      const titulo = document.createElement("h2");
+      titulo.textContent = `Jogo ${pasta}`;
+
+      card.appendChild(titulo);
+      grid.appendChild(card);
+    }
+  </script>
+</body>
+</html>
